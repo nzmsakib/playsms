@@ -60,7 +60,7 @@ $content .= "
 		var lastTab = $.cookie('pluginmanager_last_tab');
 		if (lastTab) {
 			$('ul.nav-tabs').children().removeClass('active');
-			$('a[href='+ lastTab +']').parents('li:first').addClass('active');
+			$('a[href=\"'+ lastTab +'\"]').parents('li:first').addClass('active');
 			$('div.tab-content').children().removeClass('in active');
 			$(lastTab).addClass('in active');
 		}

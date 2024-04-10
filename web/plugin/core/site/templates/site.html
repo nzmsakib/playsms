@@ -17,10 +17,12 @@ tinymce.init({
 <h2>{{ Manage site }}</h2>
 <form id=fm_core_site name=id_core_site action="{{ ACTION_URL }}" method=POST>
 	{{ CSRF_FORM }}
-	<ul class='nav nav-tabs nav-justified'>
-		<li class=active><a href='#tabs-site-configuration' data-toggle=tab>{{ Site configuration }}</a></li>
-		<li><a href='#tabs-information-page' data-toggle=tab>{{ Information page }}</a></li>
-	</ul>
+	<div class="playsms-actions-box">
+		<ul class='nav nav-tabs nav-justified' id='playsms-tab-site'>
+			<li class='nav-item'><a class='nav-link' href='#tabs-site-configuration' data-toggle=tab>{{ Site configuration }}</a></li>
+			<li class='nav-item'><a class='nav-link' href='#tabs-information-page' data-toggle=tab>{{ Information page }}</a></li>
+		</ul>
+	</div>
 	<div class=tab-content>
 		<div id='tabs-site-configuration' class='tab-pane fade in active'>
 			<h4>{{ Site configuration }}</h4>
@@ -119,7 +121,7 @@ $(document).ready(function() {
 	var lastTab = $.cookie('site_config_last_tab');
 	if (lastTab) {
 		$('ul.nav-tabs').children().removeClass('active');
-		$('a[href='+ lastTab +']').parents('li:first').addClass('active');
+		$('a[href="'+ lastTab +'"]').parents('li:first').addClass('active');
 		$('div.tab-content').children().removeClass('in active');
 		$(lastTab).addClass('in active');
 	}

@@ -54,6 +54,33 @@ function themes_submenu($content = '') {
 	return $ret;
 }
 
+function themes_menu_tree($menus = [])
+{
+	global $menu_config;
+
+	$ret = '';
+
+	if ($menus) {
+		$menu_config = $menus;
+	}
+
+	if (core_themes_get()) {
+		$ret = core_hook(core_themes_get(), 'themes_menu_tree', array(
+			$menu_config
+		)
+		);
+	}
+
+	if (!$ret) {
+		$ret = core_hook('common', 'themes_menu_tree', array(
+			$menu_config
+		)
+		);
+	}
+
+	return $ret;
+}
+
 function themes_get_menu_tree($menus = '') {
 	global $menu_config;
 	
